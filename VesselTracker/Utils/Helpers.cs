@@ -24,7 +24,7 @@ public static class InputHelpers
         return Convert.ToInt32(BuildYear);
     }
 
-    public static string handleUniqueIMOInput(List<Vessel> vessels)
+    public static string handleUniqueIMOInput(IEnumerable<Vessel> vessels)
     {
         string IMO;
         while (true)

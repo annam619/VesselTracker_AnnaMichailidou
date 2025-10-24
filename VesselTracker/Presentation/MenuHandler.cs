@@ -1,5 +1,7 @@
 public class Menu()
 {
+
+    public static IVesselRepository inMemoryVessel = new InMemoryVesselRepository();
     public static bool MainMenu()
     {
         Console.Clear();
@@ -28,9 +30,9 @@ public class Menu()
     {
         Console.Clear();
 
-        List<Vessel> vessels = VesselsManager.GetAllVessels();
+        IEnumerable<Vessel> vessels = inMemoryVessel.GetAll();
 
-        int Id = vessels.Count;
+        int Id = vessels.ToList().Count;
 
         Console.Write("Enter vessel Name: ");
         string Name = Console.ReadLine();
@@ -42,7 +44,8 @@ public class Menu()
 
         int BuildYear = InputHelpers.handleBuildYearInput();
 
-        VesselsManager.AddVessel(Id, Name, IMO, Flag, BuildYear);
+        Vessel newVessel = new Vessel(Id, Name, IMO, Flag, BuildYear);
+        inMemoryVessel.Add(newVessel);
 
         Console.WriteLine("\nPress any key to return to the menu.");
 
@@ -54,9 +57,9 @@ public class Menu()
     private static void listVesselsMenu()
     {
         Console.Clear();
-        List<Vessel> vessels = VesselsManager.GetAllVessels();
+        IEnumerable<Vessel> vessels = inMemoryVessel.GetAll();
 
-        if (vessels.Count == 0)
+        if (vessels.ToList().Count == 0)
         {
             Console.WriteLine("No vessels have been added yet.");
         }
