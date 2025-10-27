@@ -1,6 +1,14 @@
-﻿bool showMenu = true;
-while (showMenu)
+﻿namespace VesselTracker;
+
+public class Program
 {
-    showMenu = Menu.MainMenu();
+    static void Main(string[] args)
+    {
+        bool showMenu = true;
+        while (showMenu)
+        {
+            showMenu = Menu.MainMenu();
+        }
+    }
 }
 

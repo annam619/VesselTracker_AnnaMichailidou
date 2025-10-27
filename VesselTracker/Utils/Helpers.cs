@@ -1,4 +1,7 @@
+
 using System.Globalization;
+
+namespace VesselTracker;
 public static class InputHelpers
 {
     public static int handleBuildYearInput()

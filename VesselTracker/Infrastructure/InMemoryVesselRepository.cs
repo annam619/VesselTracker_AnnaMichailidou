@@ -1,4 +1,6 @@
-public class InMemoryVesselRepository: IVesselRepository
+namespace VesselTracker;
+
+public class InMemoryVesselRepository : IVesselRepository
 {
     private static List<Vessel> vesselsList = new List<Vessel>();
     public void Add(Vessel vessel)
@@ -12,7 +14,7 @@ public class InMemoryVesselRepository: IVesselRepository
     {
 
         IEnumerable<Vessel> vessels = vesselsList;
-        
+
         return vessels;
     }
 

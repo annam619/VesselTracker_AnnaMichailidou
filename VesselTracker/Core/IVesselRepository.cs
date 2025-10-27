@@ -1,3 +1,5 @@
+namespace VesselTracker;
+
 public interface IVesselRepository
 {
     void Add(Vessel vessel);

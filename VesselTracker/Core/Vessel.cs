@@ -1,3 +1,5 @@
+namespace VesselTracker;
+
 public class Vessel
 {
     public int Id { get; set; }
