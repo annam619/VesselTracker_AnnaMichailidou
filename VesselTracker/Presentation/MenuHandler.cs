@@ -3,7 +3,8 @@ namespace VesselTracker;
 public class Menu()
 {
 
-    public static IVesselRepository inMemoryVessel = new InMemoryVesselRepository();
+    // public static IVesselRepository inMemoryVessel = new InMemoryVesselRepository();
+    public static IVesselRepository inMemoryVessel = new SqlVesselRepository();
     public static bool MainMenu()
     {
         Console.Clear();
