@@ -3,8 +3,8 @@ namespace VesselTracker;
 public class Menu()
 {
 
-    // public static IVesselRepository inMemoryVessel = new InMemoryVesselRepository();
-    public static IVesselRepository inMemoryVessel = new SqlVesselRepository();
+    // public static IVesselRepository vesselRepository = new vesselRepositoryRepository();
+    public static IVesselRepository vesselRepository = new SqlVesselRepository();
     public static bool MainMenu()
     {
         Console.Clear();
@@ -33,7 +33,7 @@ public class Menu()
     {
         Console.Clear();
 
-        IEnumerable<Vessel> vessels = inMemoryVessel.GetAll();
+        IEnumerable<Vessel> vessels = vesselRepository.GetAll();
 
         int Id = vessels.ToList().Count;
 
@@ -48,7 +48,7 @@ public class Menu()
         int BuildYear = InputHelpers.handleBuildYearInput();
 
         Vessel newVessel = new Vessel(Id, Name, IMO, Flag, BuildYear);
-        inMemoryVessel.Add(newVessel);
+        vesselRepository.Add(newVessel);
 
         Console.WriteLine("\nPress any key to return to the menu.");
 
@@ -60,7 +60,7 @@ public class Menu()
     private static void listVesselsMenu()
     {
         Console.Clear();
-        IEnumerable<Vessel> vessels = inMemoryVessel.GetAll();
+        IEnumerable<Vessel> vessels = vesselRepository.GetAll();
 
         if (vessels.ToList().Count == 0)
         {
